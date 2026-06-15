@@ -345,11 +345,3 @@ but that doesn't matter here because [justification]."
 
 ---
 
-## HOMEWORK BEFORE TUESDAY
-
-- [ ] Draw this architecture by hand on paper
-- [ ] Practice saying the message flow out loud without notes
-- [ ] Learn the difference between Authentication vs Authorisation
-- [ ] Read about Kafka topics and partitions (15 mins)
-- [ ] Review the AWS → Azure translation table
-- [ ] Complete 3 more Codility problems (Sunday + Monday)

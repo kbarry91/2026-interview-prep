@@ -125,7 +125,6 @@ class Solution
             {
                 queue.Dequeue();
             }
-
             // Step 4: Check if clinician is under the rate limit
             if (queue.Count < 3)
             {

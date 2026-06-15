@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Java Quick Reference — Interview</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 24px;
+    line-height: 1.55;
+    color: #1a1a1a;
+    background: #fafafa;
+  }
+  h1 {
+    color: #0a3d62;
+    border-bottom: 3px solid #0a3d62;
+    padding-bottom: 8px;
+    margin-top: 0;
+  }
+  h2 {
+    color: #0a3d62;
+    margin-top: 32px;
+    border-bottom: 1px solid #d0d0d0;
+    padding-bottom: 4px;
+  }
+  h3 {
+    color: #1e6091;
+    margin-top: 20px;
+    margin-bottom: 6px;
+  }
+  pre {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 12px 16px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  code {
+    font-family: "SF Mono", Monaco, Consolas, monospace;
+  }
+  p code, li code, td code {
+    background: #eef2f5;
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: #c7254e;
+    font-size: 0.92em;
+  }
+  .keyword { color: #569cd6; }
+  .type    { color: #4ec9b0; }
+  .string  { color: #ce9178; }
+  .comment { color: #6a9955; font-style: italic; }
+  .method  { color: #dcdcaa; }
+  .number  { color: #b5cea8; }
+
+  ul, ol { padding-left: 22px; }
+  li { margin: 4px 0; }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0;
+  }
+  th, td {
+    border: 1px solid #d0d0d0;
+    padding: 8px 12px;
+    text-align: left;
+  }
+  th { background: #eef2f5; }
+
+  .callout {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 12px 16px;
+    margin: 16px 0;
+    border-radius: 4px;
+  }
+  .danger {
+    background: #ffebee;
+    border-left: 4px solid #c62828;
+    padding: 12px 16px;
+    margin: 16px 0;
+    border-radius: 4px;
+  }
+  .success {
+    background: #e8f5e9;
+    border-left: 4px solid #2e7d32;
+    padding: 12px 16px;
+    margin: 16px 0;
+    border-radius: 4px;
+  }
+  .footer-note {
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #0a3d62;
+    margin-top: 40px;
+    padding: 20px;
+    background: #eef2f5;
+    border-radius: 6px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Java Quick Reference — Interview</h1>
+<p><em>Skim through. Don't memorise.</em></p>
+
+<h2>1. Primitive Types</h2>
+<pre><code><span class="type">int</span>        <span class="comment">// 32-bit integer, range ~±2.1 billion</span>
+<span class="type">long</span>       <span class="comment">// 64-bit, use for large numbers (timestamps, big counts)</span>
+<span class="type">double</span>     <span class="comment">// 64-bit floating point</span>
+<span class="type">float</span>      <span class="comment">// 32-bit floating point (rarely used in interviews)</span>
+<span class="type">boolean</span>    <span class="comment">// true/false</span>
+<span class="type">char</span>       <span class="comment">// single character, 16-bit</span>
+<span class="type">byte</span>       <span class="comment">// 8-bit (rarely used in interviews)</span></code></pre>
+
+<h2>2. Common Collections</h2>
+<pre><code><span class="type">List</span>&lt;<span class="type">Integer</span>&gt; list = <span class="keyword">new</span> <span class="type">ArrayList</span>&lt;&gt;();
+<span class="type">Map</span>&lt;K, V&gt; map = <span class="keyword">new</span> <span class="type">HashMap</span>&lt;&gt;();
+<span class="type">Set</span>&lt;T&gt; set = <span class="keyword">new</span> <span class="type">HashSet</span>&lt;&gt;();
+<span class="type">Deque</span>&lt;T&gt; stack = <span class="keyword">new</span> <span class="type">ArrayDeque</span>&lt;&gt;();   <span class="comment">// push/pop for stack</span>
+<span class="type">Deque</span>&lt;T&gt; queue = <span class="keyword">new</span> <span class="type">ArrayDeque</span>&lt;&gt;();   <span class="comment">// offer/poll for queue</span>
+<span class="type">PriorityQueue</span>&lt;<span class="type">Integer</span>&gt; heap = <span class="keyword">new</span> <span class="type">PriorityQueue</span>&lt;&gt;();   <span class="comment">// min-heap</span></code></pre>
+
+<h2>3. Essential Methods</h2>
+
+<h3>Array</h3>
+<pre><code>arr.length              <span class="comment">// size (no parentheses)</span>
+<span class="type">Arrays</span>.<span class="method">sort</span>(arr)        <span class="comment">// sort in place</span>
+<span class="type">Arrays</span>.<span class="method">toString</span>(arr)    <span class="comment">// for printing</span>
+<span class="type">int</span>[] copy = <span class="type">Arrays</span>.<span class="method">copyOf</span>(arr, n)</code></pre>
+
+<h3>List</h3>
+<pre><code>list.<span class="method">size</span>()             <span class="comment">// size (with parentheses)</span>
+list.<span class="method">get</span>(i)
+list.<span class="method">add</span>(x)
+list.<span class="method">add</span>(i, x)          <span class="comment">// insert at index</span>
+list.<span class="method">remove</span>(i)
+list.<span class="method">contains</span>(x)        <span class="comment">// O(n) — careful</span>
+list.<span class="method">isEmpty</span>()</code></pre>
+
+<h3>Map</h3>
+<pre><code>map.<span class="method">put</span>(k, v)
+map.<span class="method">get</span>(k)              <span class="comment">// returns null if absent</span>
+map.<span class="method">getOrDefault</span>(k, defaultVal)
+map.<span class="method">containsKey</span>(k)
+map.<span class="method">remove</span>(k)
+map.<span class="method">size</span>()
+map.<span class="method">keySet</span>()
+map.<span class="method">values</span>()
+map.<span class="method">entrySet</span>()
+map.<span class="method">computeIfAbsent</span>(k, key -&gt; <span class="keyword">new</span> <span class="type">ArrayList</span>&lt;&gt;()).<span class="method">add</span>(x)</code></pre>
+
+<h3>Set</h3>
+<pre><code>set.<span class="method">add</span>(x)              <span class="comment">// returns true if new, false if existed</span>
+set.<span class="method">contains</span>(x)         <span class="comment">// O(1)</span>
+set.<span class="method">remove</span>(x)
+set.<span class="method">size</span>()</code></pre>
+
+<h3>String</h3>
+<pre><code>str.<span class="method">length</span>()            <span class="comment">// size (with parentheses, unlike arrays)</span>
+str.<span class="method">charAt</span>(i)
+str.<span class="method">substring</span>(start, end)   <span class="comment">// end exclusive</span>
+str.<span class="method">indexOf</span>(c)
+str.<span class="method">equals</span>(other)       <span class="comment">// NEVER use == for strings</span>
+str.<span class="method">equalsIgnoreCase</span>(other)
+str.<span class="method">toLowerCase</span>()
+str.<span class="method">toUpperCase</span>()
+str.<span class="method">split</span>(<span class="string">","</span>)          <span class="comment">// returns String[]</span>
+str.<span class="method">trim</span>()
+str.<span class="method">isEmpty</span>()
+str.<span class="method">contains</span>(<span class="string">"abc"</span>)
+str.<span class="method">toCharArray</span>()
+<span class="type">String</span>.<span class="method">valueOf</span>(num)     <span class="comment">// convert to string</span>
+<span class="type">Integer</span>.<span class="method">parseInt</span>(str)   <span class="comment">// string to int</span></code></pre>
+
+<h3>StringBuilder (use when concatenating in a loop)</h3>
+<pre><code><span class="type">StringBuilder</span> sb = <span class="keyword">new</span> <span class="type">StringBuilder</span>();
+sb.<span class="method">append</span>(<span class="string">"hello"</span>);
+sb.<span class="method">append</span>(num);
+sb.<span class="method">toString</span>();
+sb.<span class="method">reverse</span>();
+sb.<span class="method">length</span>();</code></pre>
+
+<h3>Character</h3>
+<pre><code><span class="type">Character</span>.<span class="method">isLetterOrDigit</span>(c)
+<span class="type">Character</span>.<span class="method">isLetter</span>(c)
+<span class="type">Character</span>.<span class="method">isDigit</span>(c)
+<span class="type">Character</span>.<span class="method">isUpperCase</span>(c)
+<span class="type">Character</span>.<span class="method">toLowerCase</span>(c)
+<span class="type">Character</span>.<span class="method">toUpperCase</span>(c)</code></pre>
+
+<h3>Math</h3>
+<pre><code><span class="type">Math</span>.<span class="method">max</span>(a, b)
+<span class="type">Math</span>.<span class="method">min</span>(a, b)
+<span class="type">Math</span>.<span class="method">abs</span>(x)
+<span class="type">Math</span>.<span class="method">pow</span>(x, y)
+<span class="type">Math</span>.<span class="method">sqrt</span>(x)
+<span class="type">Math</span>.<span class="method">floor</span>(x)
+<span class="type">Math</span>.<span class="method">ceil</span>(x)
+<span class="type">Integer</span>.MAX_VALUE
+<span class="type">Integer</span>.MIN_VALUE</code></pre>
+
+<h2>4. Common Keywords</h2>
+<pre><code><span class="keyword">final</span>           <span class="comment">// immutable variable, can't be reassigned</span>
+<span class="keyword">static</span>          <span class="comment">// belongs to class not instance</span>
+<span class="keyword">public</span>/<span class="keyword">private</span>/<span class="keyword">protected</span>  <span class="comment">// access modifiers</span>
+<span class="keyword">return</span>          <span class="comment">// exits method with value</span>
+<span class="keyword">break</span>           <span class="comment">// exits loop</span>
+<span class="keyword">continue</span>        <span class="comment">// skips to next iteration</span>
+<span class="keyword">new</span>             <span class="comment">// create object</span>
+<span class="keyword">this</span>            <span class="comment">// current instance</span>
+<span class="keyword">null</span>            <span class="comment">// absence of value</span>
+<span class="type">void</span>            <span class="comment">// method returns nothing</span></code></pre>
+
+<h2>5. Loops</h2>
+<pre><code><span class="comment">// Standard for</span>
+<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) { }
+
+<span class="comment">// Reverse</span>
+<span class="keyword">for</span> (<span class="type">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) { }
+
+<span class="comment">// Enhanced for (read-only)</span>
+<span class="keyword">for</span> (<span class="type">int</span> x : arr) { }
+<span class="keyword">for</span> (<span class="type">String</span> s : list) { }
+<span class="keyword">for</span> (<span class="type">Map</span>.<span class="type">Entry</span>&lt;K, V&gt; entry : map.<span class="method">entrySet</span>()) {
+    K key = entry.<span class="method">getKey</span>();
+    V val = entry.<span class="method">getValue</span>();
+}
+
+<span class="comment">// While</span>
+<span class="keyword">while</span> (condition) { }</code></pre>
+
+<h2>6. Common Patterns</h2>
+
+<h3>Array to List</h3>
+<pre><code><span class="type">List</span>&lt;<span class="type">Integer</span>&gt; list = <span class="type">Arrays</span>.<span class="method">asList</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);   <span class="comment">// fixed size</span>
+<span class="type">List</span>&lt;<span class="type">Integer</span>&gt; list = <span class="keyword">new</span> <span class="type">ArrayList</span>&lt;&gt;(<span class="type">Arrays</span>.<span class="method">asList</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>));   <span class="comment">// mutable</span></code></pre>
+
+<h3>List to Array</h3>
+<pre><code><span class="type">int</span>[] arr = list.<span class="method">stream</span>().<span class="method">mapToInt</span>(<span class="type">Integer</span>::intValue).<span class="method">toArray</span>();</code></pre>
+
+<h3>Iterate Map</h3>
+<pre><code><span class="keyword">for</span> (<span class="type">Map</span>.<span class="type">Entry</span>&lt;<span class="type">String</span>, <span class="type">Integer</span>&gt; e : map.<span class="method">entrySet</span>()) {
+    <span class="type">System</span>.out.<span class="method">println</span>(e.<span class="method">getKey</span>() + <span class="string">" = "</span> + e.<span class="method">getValue</span>());
+}</code></pre>
+
+<h3>Build a frequency map</h3>
+<pre><code><span class="type">Map</span>&lt;<span class="type">Character</span>, <span class="type">Integer</span>&gt; freq = <span class="keyword">new</span> <span class="type">HashMap</span>&lt;&gt;();
+<span class="keyword">for</span> (<span class="type">char</span> c : s.<span class="method">toCharArray</span>()) {
+    freq.<span class="method">put</span>(c, freq.<span class="method">getOrDefault</span>(c, <span class="number">0</span>) + <span class="number">1</span>);
+}</code></pre>
+
+<h3>Sort with custom comparator</h3>
+<pre><code><span class="type">Arrays</span>.<span class="method">sort</span>(arr, (a, b) -&gt; b - a);   <span class="comment">// descending</span>
+<span class="type">Collections</span>.<span class="method">sort</span>(list, <span class="type">Comparator</span>.<span class="method">reverseOrder</span>());</code></pre>
+
+<h2>7. Common Mistakes To Avoid</h2>
+
+<div class="danger">
+<ul>
+<li><code>==</code> for strings — <strong>wrong</strong>, use <code>.equals()</code></li>
+<li><code>arr.length()</code> for arrays — <strong>wrong</strong>, no parentheses</li>
+<li><code>list.length</code> for lists — <strong>wrong</strong>, it's <code>.size()</code></li>
+<li><code>map.get(key)</code> without null check when key may be absent</li>
+<li>Modifying a collection while iterating with enhanced for — throws <code>ConcurrentModificationException</code></li>
+<li>Comparing Integer objects with <code>==</code> for large values — use <code>.equals()</code> or <code>intValue()</code></li>
+<li>Using <code>HashMap</code> (raw type) without <code>&lt;&gt;</code> — compiler warning</li>
+</ul>
+</div>
+
+<h2>8. Five Things To Say In The First 5 Minutes</h2>
+<div class="success">
+<ol>
+<li><strong>Greet warmly</strong> — "Good to meet you both."</li>
+<li><strong>Ask clarifying questions on the problem</strong> — null inputs, edge cases, constraints</li>
+<li><strong>State approach in plain English BEFORE coding</strong></li>
+<li><strong>State time/space complexity BEFORE coding</strong></li>
+<li><strong>Talk through tests/edge cases when done</strong></li>
+</ol>
+</div>
+
+<h2>9. If You Blank On Syntax</h2>
+<div class="callout">
+<p><strong>Just ask.</strong> <em>"Can I confirm the syntax for X — is it <code>.length</code> or <code>.length()</code>?"</em></p>
+<p>Senior engineers ask. Juniors guess and fail.</p>
+</div>
+
+<div class="footer-note">
+Breathe. Water. Computer set up early.<br>
+<span style="font-size: 1.3em;">You're ready. 💪</span>
+</div>
+
+</body>
+</html>
